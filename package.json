@@ -1,10 +1,10 @@
 {
-    "name": "com.lastabyss.simplegraphql",
-    "version": "1.0.0",
-    "displayName": "SimpleGraphQL",
+    "name": "studio.nugoon.graphqlUnity",
+    "version": "1.0.1",
+    "displayName": "GraphQL-Unity",
     "description": "A simple graphQL client that allows one to use .graphql files for queries, mutations, and subscriptions with Unity.",
-    "unity": "2019.3",
-    "unityRelease": "13f1",
+    "unity": "2019.4",
+    "unityRelease": "11f1 LTS",
     "keywords": [
         "graphql",
         "client"
@@ -13,5 +13,17 @@
         "name": "Last Abyss Inc.",
         "email": "contact@lastabyss.com",
         "url": "https://lastabyss.com"
-    }
+    },
+    "contributors" : [
+        {
+            "name" : "Ray De Jesus",
+            "email" : "ray@scopeweb.nyc"
+        },
+        {
+            "name" : "NuGoon, LLC",
+            "url" : "https://nugoon.studio"
+        }
+    ]
+
+
 }

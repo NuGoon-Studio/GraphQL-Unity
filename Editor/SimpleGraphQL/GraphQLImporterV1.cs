@@ -2,10 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEngine;
 using SimpleGraphQL.GraphQLParser;
 using SimpleGraphQL.GraphQLParser.AST;
+
+// ifdef for different unity versions
+#if UNITY_2020_2_OR_NEWER
+using UnityEditor.AssetImporters;
+
+#elif UNITY_2017_1_OR_NEWER
 using UnityEditor.Experimental.AssetImporters;
-using UnityEngine;
+#endif
 
 namespace SimpleGraphQL
 {
@@ -47,7 +54,7 @@ namespace SimpleGraphQL
                     queryFile.Queries.Add(new Query
                     {
                         FileName = fileName,
-                        OperationName = operation.Name.Value,
+                        OperationName = operation.Name?.Value,
                         OperationType = operationType,
                         Source = contents
                     });

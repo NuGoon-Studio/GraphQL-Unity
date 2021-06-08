@@ -42,10 +42,10 @@ namespace SimpleGraphQL
         public static async Task<string> PostQueryAsync(
             string url,
             Query query,
-            string authScheme = "Bearer",
-            string authToken = null,
             Dictionary<string, object> variables = null,
-            Dictionary<string, string> headers = null
+            Dictionary<string, string> headers = null,
+            string authToken = null,
+            string authScheme = null
         )
         {
             var uri = new Uri(url);
@@ -103,10 +103,10 @@ namespace SimpleGraphQL
         /// <returns></returns>
         public static async Task WebSocketConnect(
             string url,
-            string authScheme = "Bearer",
-            string authToken = null,
             string protocol = "graphql-ws",
-            Dictionary<string, string> headers = null
+            Dictionary<string, string> headers = null,
+            string authToken = null,
+            string authScheme = null
         )
         {
             url = url.Replace("http", "ws");
@@ -136,7 +136,7 @@ namespace SimpleGraphQL
                 Debug.Log("Websocket is initting");
                 // Initialize the socket at the server side
                 await _webSocket.SendAsync(
-                    new ArraySegment<byte>(Encoding.ASCII.GetBytes(@"{""type"":""connection_init""}")),
+                    new ArraySegment<byte>(Encoding.UTF8.GetBytes(@"{""type"":""connection_init""}")),
                     WebSocketMessageType.Text,
                     true,
                     CancellationToken.None
@@ -206,7 +206,7 @@ namespace SimpleGraphQL
             );
 
             await _webSocket.SendAsync(
-                new ArraySegment<byte>(Encoding.ASCII.GetBytes(json)),
+                new ArraySegment<byte>(Encoding.UTF8.GetBytes(json)),
                 WebSocketMessageType.Text,
                 true,
                 CancellationToken.None
@@ -229,7 +229,7 @@ namespace SimpleGraphQL
             }
 
             await _webSocket.SendAsync(
-                new ArraySegment<byte>(Encoding.ASCII.GetBytes($@"{{""type"":""stop"",""id"":""{id}""}}")),
+                new ArraySegment<byte>(Encoding.UTF8.GetBytes($@"{{""type"":""stop"",""id"":""{id}""}}")),
                 WebSocketMessageType.Text,
                 true,
                 CancellationToken.None
